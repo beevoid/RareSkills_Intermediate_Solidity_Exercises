@@ -20,5 +20,9 @@ contract AccountMaker {
         // use create2 to create an account with the owner address
         // the salt should be the owner address
         // the value sent to them should be msg.value
+        bytes32 salt = bytes32(bytes20(uint160(owner))); // to use owner only onces
+        //bytes32 salt = keccak256(abi.encodePacked(owner, nonce)); // to use owner multiple times
+        Account2 account = new Account2{salt: salt, value: msg.value}(owner);
+        return address(account);
     }
 }

@@ -2,8 +2,20 @@
 pragma solidity 0.8.28;
 
 contract StringIndex {
-    function main(string memory str, uint256 index) public returns (string memory) {
+    function main(
+        string memory str,
+        uint256 index
+    ) public returns (string memory) {
         // return the character at index in str
         // assume str only consists of ascii characters
-    } 
+
+        bytes memory b = bytes(str);
+        bytes memory out = new bytes(1);
+        out[0] = b[index];
+        return string(out);
+
+        //      or
+
+        return string(abi.encodePacked(bytes(str)[index]));
+    }
 }

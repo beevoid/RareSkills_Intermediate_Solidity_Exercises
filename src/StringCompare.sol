@@ -6,5 +6,10 @@ contract StringCompare {
         // compare two strings
         // return true if they are equal
         // return false if they are not equal
+        if (keccak256(bytes(a)) == keccak256(bytes(b))) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

@@ -11,5 +11,10 @@ contract Bytes {
         // ...
         // etc
 
-   }
+        bytes memory out = new bytes(z);
+        for (uint256 i = 0; i < z; i++) {
+            out[i] = bytes1(uint8(i));
+        }
+        return out;
+    }
 }

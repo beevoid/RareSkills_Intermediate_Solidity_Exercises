@@ -7,5 +7,18 @@ contract LowLevelArgs2 {
         // if the low level call reverts, revert also
 
         // bonus challenge: use an interface and a high level call to accomplish the same task
+
+        //Low level call
+        (bool ok, ) = a.call(
+            abi.encodeWithSignature("rare(uint256,uint256)", x, y)
+        );
+        require(ok);
+
+        //High Level Call
+        IRare(a).rare(x, y);
     }
+}
+
+interface IRare {
+    function rare(uint256, uint256) external;
 }

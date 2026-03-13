@@ -8,6 +8,14 @@ contract YourContract {
     function main(address target, address forwarder) public {
         // make the right function call such that YourContract gets 100 tokens
         // you may only modify this function
+        bytes memory data = abi.encodeWithSignature(
+            "giveTokens(address)",
+            address(this)
+        );
+        (bool ok, ) = forwarder.call(
+            abi.encodeWithSignature("forward(address,bytes)", target, data)
+        );
+        require(ok, "Call Failed!");
     }
 }
 

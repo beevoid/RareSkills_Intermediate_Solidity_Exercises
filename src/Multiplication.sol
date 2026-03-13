@@ -2,8 +2,13 @@
 pragma solidity 0.8.28;
 
 contract Multiplication {
-    function multiply(uint8 rewards, uint8 numDays) public pure returns (uint256 totalRewards) {
+    function multiply(
+        uint8 rewards,
+        uint8 numDays
+    ) public pure returns (uint256 totalRewards) {
         // TODO: Implement the logic to calculate the total rewards, which is
         // the number of rewards multiplied by the number of days.
+        uint256 output = uint256(rewards) * uint256(numDays);
+        return output;
     }
 }

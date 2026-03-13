@@ -18,7 +18,19 @@ contract ReadStruct {
     function main(address a) public view returns (uint256 x, uint256 y) {
         // read the struct from ViewContract and return the x and y values
         // in reversed order, i.e. x is y and y is x
-        // do not redeclare the struct in this contract or 
+        // do not redeclare the struct in this contract or
         // reference it in ViewContract
+        // (bool ok, bytes memory data) = a11.call(
+        //     abi.encodeWithSignature("Point()")
+        // );
+        // require(ok);
+        // (x, y) = abi.decode(data, (uint256, uint256));
+        // return (y, x);
+
+        ViewContract vc = ViewContract(a);
+        (uint256 sx, uint256 sy) = vc.s();
+        x = sy;
+        y = sx;
+        return (x, y);
     }
 }

@@ -2,7 +2,6 @@
 pragma solidity 0.8.28;
 
 contract RemoveElement {
-
     uint256[] public arr;
 
     function setArr(uint256[] memory _arr) public {
@@ -14,5 +13,7 @@ contract RemoveElement {
         // the new array should have a length of arr.length - 1
         // use swap-and-pop to remove the item
 
+        arr[index] = arr[arr.length - 1];
+        arr.pop();
     }
 }

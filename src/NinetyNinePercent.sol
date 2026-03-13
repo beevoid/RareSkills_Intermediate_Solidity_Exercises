@@ -10,5 +10,13 @@ contract NinetyNinePercent {
         // example: x = 32999999999, y = 33333333333 return false
 
         // return true if x >= y * 0.99. But remember, Soliidty does not have floats.
+
+        uint256 yD = y * 99;
+        uint256 xD = x * 1e2;
+        if (xD >= yD) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

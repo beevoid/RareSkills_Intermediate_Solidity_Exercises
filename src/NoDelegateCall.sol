@@ -4,8 +4,22 @@ pragma solidity 0.8.28;
 contract NoDelegateCall {
     // your code here
     // hint: https://www.rareskills.io/post/nodelegatecall
+    address private immutable self;
+    constructor() {
+        self = address(this);
+    }
 
-    function meaningOfLifeAndEverything() public view returns (uint256 fourtyTwo) {
+    modifier NoDelegateCall() {
+        require(address(this) == self, "Delegate Call Not Allowed!");
+        _;
+    }
+
+    function meaningOfLifeAndEverything()
+        public
+        view
+        NoDelegateCall
+        returns (uint256 fourtyTwo)
+    {
         // your code here
         // this function should be callable, but not delegatecallable
         // it should return 42

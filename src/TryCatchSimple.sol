@@ -8,5 +8,11 @@ contract TryCatchSimple {
     function main(IERC20 token) public view returns (string memory) {
         // use try catch to return the name of the token using .name()
         // if the call fails, return an empty string
+
+        try token.name() returns (string memory n) {
+            return n;
+        } catch {
+            return "";
+        }
     }
 }
