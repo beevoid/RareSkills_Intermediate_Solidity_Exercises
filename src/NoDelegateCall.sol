@@ -5,6 +5,7 @@ contract NoDelegateCall {
     // your code here
     // hint: https://www.rareskills.io/post/nodelegatecall
     address private immutable self;
+
     constructor() {
         self = address(this);
     }
@@ -14,12 +15,7 @@ contract NoDelegateCall {
         _;
     }
 
-    function meaningOfLifeAndEverything()
-        public
-        view
-        NoDelegateCall
-        returns (uint256 fourtyTwo)
-    {
+    function meaningOfLifeAndEverything() public view NoDelegateCall returns (uint256 fourtyTwo) {
         // your code here
         // this function should be callable, but not delegatecallable
         // it should return 42

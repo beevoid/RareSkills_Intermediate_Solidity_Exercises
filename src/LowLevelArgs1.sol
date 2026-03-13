@@ -9,7 +9,7 @@ contract LowLevelArgs1 {
         // bonus challenge: use an interface and a high level call to accomplish the same task
 
         //low level call
-        (bool ok, ) = a.call(abi.encodeWithSignature("rare(uint256)", x));
+        (bool ok,) = a.call(abi.encodeWithSignature("rare(uint256)", x));
         require(ok);
 
         //high level call

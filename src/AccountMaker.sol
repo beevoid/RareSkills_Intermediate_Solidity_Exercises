@@ -10,7 +10,7 @@ contract Account2 {
 
     function withdraw() external {
         require(msg.sender == owner, "Not owner");
-        (bool ok, ) = owner.call{value: address(this).balance}("");
+        (bool ok,) = owner.call{value: address(this).balance}("");
         require(ok);
     }
 }

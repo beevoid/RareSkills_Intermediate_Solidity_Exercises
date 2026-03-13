@@ -15,9 +15,7 @@ contract LowLevelStruct {
 
         //Low Level Call
 
-        (bool ok, bytes memory data) = a.call(
-            abi.encodeWithSignature("point()")
-        );
+        (bool ok, bytes memory data) = a.call(abi.encodeWithSignature("point()"));
         require(ok);
         (x, y) = abi.decode(data, (uint256, uint256));
         return (x, y);

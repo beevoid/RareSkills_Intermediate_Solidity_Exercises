@@ -11,7 +11,7 @@ contract LowLevel {
         // bonus challenge: use an interface and a high level call to accomplish the same task
 
         // low level call
-        (bool ok, ) = a.call(abi.encodeWithSignature("foo()"));
+        (bool ok,) = a.call(abi.encodeWithSignature("foo()"));
         return ok;
 
         // high level call
